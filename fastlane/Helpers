@@ -1,0 +1,56 @@
+xcodeProjPath = ENV["XCODE_PROJ_PATH"]
+
+# test comment
+lane :bumpAndroidVersion do |values|
+    type = values[:type]
+    flavor = values[:flavor]
+    version = values[:version]
+
+    increment_version_name(
+        app_project_dir: 'android/app',
+        flavor: flavor,
+        version_name: version,
+        bump_type: type
+    )
+end
+
+lane :bumpAndroidVersionCode do |values|
+    flavor = values[:flavor]
+    newVersionCode = values[:versionCode]
+
+    increment_version_code(
+        app_project_dir: 'android/app',
+        version_code: newVersionCode,
+        flavor: flavor
+    )
+end
+
+lane :bumpIosVersion do |values|
+    target = values[:target]
+    type = values[:type]
+    version = values[:version]
+
+    increment_version_number_in_xcodeproj(
+        xcodeproj: xcodeProjPath,
+        target: target,
+        version_number: version,
+        bump_type: type
+    )
+end
+
+lane :bumpIosVersionCode do |values|
+    target = values[:target]
+    versionCode = values[:versionCode]
+
+    increment_build_number_in_xcodeproj(
+         xcodeproj: xcodeProjPath,
+         target: target,
+         build_number: versionCode
+    )
+end
+
+
+lane :checkVersions do |values|
+    target = values[:target]
+
+end

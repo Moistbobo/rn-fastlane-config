@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "fastlane:androidRelease": "bundle exec fastlane android build buildType:Release copy:true",
+    "fastlane:bundleAndroidUat": "yarn fastlane:androidRelease flavor:Uat task:bundle",
+    "fastlane:bundleAndroidProduction": "yarn fastlane:androidRelease flavor:Production task:bundle",
+    "fastlane:ios": "bundle exec fastlane ios build toTestFlight:true",
+    "fastlane:iosUat": "yarn fastlane:ios scheme:[REPLACEME]",
+    "fastlane:iosProduction": "yarn fastlane:ios scheme:[REPLACEME]",
+    "fastlane:bumpUatVersion": "bundle exec fastlane bumpVersion flavor:uat target:[REPLACEME]",
+    "fastlane:bumpProductionVersion": "bundle exec fastlane bumpVersion flavor:production target:[REPLACEME]"
+  }
+}
