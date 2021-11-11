@@ -48,9 +48,3 @@ lane :bumpIosVersionCode do |values|
          build_number: versionCode
     )
 end
-
-
-lane :checkVersions do |values|
-    target = values[:target]
-
-end
